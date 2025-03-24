@@ -6,4 +6,8 @@
     <position>0</position>
     <default_language>en</default_language>
     <status>active</status>
+    <queries>
+        <item for="install">ALTER TABLE ?:orders ADD alternative_id varchar(255)</item>
+        <item for="uninstall">ALTER TABLE ?:orders DROP COLUMN alternative_id</item>
+    </queries>
 </addon>
