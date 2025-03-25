@@ -15,7 +15,25 @@ function fn_order_id_changes_generate_alternative_id(): string
 
     return $formatted_number;
 }
-function fn_order_id_changes_get_orders($params, &$fields, $sortings, $condition, $join, $group)
+function fn_order_id_changes_get_orders($params, &$fields, $sortings, &$condition, $join, $group)
 {
     $fields[] = '?:orders.alternative_id';
+
+    if (!empty($params['order_id'])) {
+        $condition .= db_quote(' OR ?:orders.alternative_id = ?s', $params['order_id']);
+    }
+}
+
+function fn_order_id_changes_get_shipments($params, &$fields_list, $joins, $condition, $group)
+{
+    $fields_list[] = '?:orders.alternative_id';
+}
+
+function fn_order_id_changes_vendor_communication_get_object_data($object_id, $object_type, &$object)
+{
+    if ($object_type === VC_OBJECT_TYPE_ORDER) {
+        $alternative_id = db_get_field("SELECT alternative_id FROM ?:orders WHERE order_id = ?i", $object_id);
+
+        $object['alternative_id'] = $alternative_id;
+    }
 }
