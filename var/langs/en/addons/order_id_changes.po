@@ -5,19 +5,10 @@ msgstr "Project-Id-Version: tygh\n"
 "Language: en_US\n"
 
 msgctxt "Addons::name::order_id_changes"
-msgid "My addon name"
-msgstr "My addon name"
+msgid "Order ID changes"
+msgstr "Order ID changes"
 
 msgctxt "Addons::description::order_id_changes"
-msgid "My addon description"
-msgstr "My addon description"
-
-msgctxt "SettingsOptions::order_id_changes::my_setting"
-msgid "My addon setting"
-msgstr "My addon setting"
-
-msgctxt "Languages::order_id_changes.my_variable"
-msgid "Custom addon variable"
-msgstr "Custom addon variable"
-
+msgid "Changes the default order ID format. Developed by alarionov | CS-Cart support"
+msgstr "Changes the default order ID format. Developed by alarionov | CS-Cart support"
 
