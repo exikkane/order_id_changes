@@ -18,21 +18,21 @@
 
 <table class="ty-table ty-orders-search">
     <thead>
-        <tr>
-            <th><a class="{$ajax_class}" href="{"`$c_url`&sort_by=order_id&sort_order=`$search.sort_order_rev`"|fn_url}" data-ca-target-id="pagination_contents">{__("id")}</a>{if $search.sort_by === "order_id"}{$sort_sign nofilter}{/if}</th>
-            <th><a class="{$ajax_class}" href="{"`$c_url`&sort_by=status&sort_order=`$search.sort_order_rev`"|fn_url}" data-ca-target-id="pagination_contents">{__("status")}</a>{if $search.sort_by === "status"}{$sort_sign nofilter}{/if}</th>
-            <th><a class="{$ajax_class}" href="{"`$c_url`&sort_by=customer&sort_order=`$search.sort_order_rev`"|fn_url}" data-ca-target-id="pagination_contents">{__("customer")}</a>{if $search.sort_by === "customer"}{$sort_sign nofilter}{/if}</th>
-            <th><a class="{$ajax_class}" href="{"`$c_url`&sort_by=date&sort_order=`$search.sort_order_rev`"|fn_url}" data-ca-target-id="pagination_contents">{__("date")}</a>{if $search.sort_by === "date"}{$sort_sign nofilter}{/if}</th>
+    <tr>
+        <th><a class="{$ajax_class}" href="{"`$c_url`&sort_by=order_id&sort_order=`$search.sort_order_rev`"|fn_url}" data-ca-target-id="pagination_contents">{__("id")}</a>{if $search.sort_by === "order_id"}{$sort_sign nofilter}{/if}</th>
+        <th><a class="{$ajax_class}" href="{"`$c_url`&sort_by=status&sort_order=`$search.sort_order_rev`"|fn_url}" data-ca-target-id="pagination_contents">{__("status")}</a>{if $search.sort_by === "status"}{$sort_sign nofilter}{/if}</th>
+        <th><a class="{$ajax_class}" href="{"`$c_url`&sort_by=customer&sort_order=`$search.sort_order_rev`"|fn_url}" data-ca-target-id="pagination_contents">{__("customer")}</a>{if $search.sort_by === "customer"}{$sort_sign nofilter}{/if}</th>
+        <th><a class="{$ajax_class}" href="{"`$c_url`&sort_by=date&sort_order=`$search.sort_order_rev`"|fn_url}" data-ca-target-id="pagination_contents">{__("date")}</a>{if $search.sort_by === "date"}{$sort_sign nofilter}{/if}</th>
 
-            {hook name="orders:manage_header"}{/hook}
+        {hook name="orders:manage_header"}{/hook}
 
-            <th><a class="{$ajax_class}" href="{"`$c_url`&sort_by=total&sort_order=`$search.sort_order_rev`"|fn_url}" data-ca-target-id="pagination_contents">{__("total")}</a>{if $search.sort_by === "total"}{$sort_sign nofilter}{/if}</th>
-            <th class="ty-orders-search__header ty-orders-search__header--actions">{__("actions")}</th>
-        </tr>
+        <th><a class="{$ajax_class}" href="{"`$c_url`&sort_by=total&sort_order=`$search.sort_order_rev`"|fn_url}" data-ca-target-id="pagination_contents">{__("total")}</a>{if $search.sort_by === "total"}{$sort_sign nofilter}{/if}</th>
+        <th class="ty-orders-search__header ty-orders-search__header--actions">{__("actions")}</th>
+    </tr>
     </thead>
     {foreach from=$orders item="o"}
         <tr>
-            <td class="ty-orders-search__item"><a href="{"orders.details?order_id=`$o.order_id`"|fn_url}"><strong>#{if $o.alternative_id}{$o.alternative_id}{else}{$o.order_id}{/if}</strong></a></td>
+            <td class="ty-orders-search__item"><a href="{"orders.details?order_id=`$o.order_id`"|fn_url}"><strong>{if $o.alternative_id}{$o.alternative_id}{else}{$o.order_id}{/if}</strong></a></td>
             <td class="ty-orders-search__item">{include file="common/status.tpl" status=$o.status display="view"}</td>
             <td class="ty-orders-search__item">
                 <ul class="ty-orders-search__user-info">
@@ -47,28 +47,28 @@
             <td class="ty-orders-search__item">{include file="common/price.tpl" value=$o.total}</td>
             <td class="ty-orders-search__item ty-orders-search__item--actions">
                 {include file="buttons/button.tpl"
-                        but_meta="cm-new-window ty-btn-icon"
-                        but_role="text"
-                        but_title=__("print_invoice")
-                        but_href="orders.print_invoice?order_id=`$o.order_id`"
-                        but_icon="ty-orders__actions-icon ty-icon-print"}
+                but_meta="cm-new-window ty-btn-icon"
+                but_role="text"
+                but_title=__("print_invoice")
+                but_href="orders.print_invoice?order_id=`$o.order_id`"
+                but_icon="ty-orders__actions-icon ty-icon-print"}
 
                 {include file="buttons/button.tpl"
-                        but_meta="ty-btn-icon"
-                        but_role="text"
-                        but_title=__("re_order")
-                        but_href="orders.reorder?order_id=`$o.order_id`"
-                        but_icon="ty-orders__actions-icon ty-icon-cw"}
+                but_meta="ty-btn-icon"
+                but_role="text"
+                but_title=__("re_order")
+                but_href="orders.reorder?order_id=`$o.order_id`"
+                but_icon="ty-orders__actions-icon ty-icon-cw"}
 
                 {include file="buttons/button.tpl"
-                        but_meta="ty-btn-icon"
-                        but_role="text"
-                        but_title=__("search_products")
-                        but_href="products.search?search_performed=Y&order_ids=`$o.order_id`"
-                        but_icon="ty-orders__actions-icon ty-icon-search"}
+                but_meta="ty-btn-icon"
+                but_role="text"
+                but_title=__("search_products")
+                but_href="products.search?search_performed=Y&order_ids=`$o.order_id`"
+                but_icon="ty-orders__actions-icon ty-icon-search"}
             </td>
         </tr>
-    {foreachelse}
+        {foreachelse}
         <tr class="ty-table__no-items">
             <td colspan="6">
                 <p class="ty-no-items">{__("text_no_orders")}</p>
