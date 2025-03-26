@@ -37,3 +37,12 @@ function fn_order_id_changes_vendor_communication_get_object_data($object_id, $o
         $object['alternative_id'] = $alternative_id;
     }
 }
+
+function fn_order_id_changes_do_call_request(&$params, $product_data, $cart, $auth, $company_id)
+{
+    if (!empty($params['order_id'])) {
+        $alternative_id = db_get_field("SELECT alternative_id FROM ?:orders WHERE order_id = ?i", $params['order_id']);
+
+        $params['order_id'] = $alternative_id;
+    }
+}

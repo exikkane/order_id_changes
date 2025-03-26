@@ -542,7 +542,7 @@
 {/capture}
 {capture name="mainbox_title"}{strip}
 
-    {__("order")} &lrm;#{if $order_info.alternative_id}{$order_info.alternative_id}{else}{$order_info.order_id}{/if} <span class="f-middle">{__("total")}: <span>{include file="common/price.tpl" value=$order_info.total}</span>{if $order_info.company_id} / {$order_info.company_id|fn_get_company_name} {""}{/if}</span>
+    {__("order")} &lrm;{if $order_info.alternative_id}{$order_info.alternative_id}{else}#{$order_info.order_id}{/if} <span class="f-middle">{__("total")}: <span>{include file="common/price.tpl" value=$order_info.total}</span>{if $order_info.company_id} / {$order_info.company_id|fn_get_company_name} {""}{/if}</span>
 
     <span class="f-small">
     {if $status_settings.appearance_type == "I" && $order_info.doc_ids[$status_settings.appearance_type]}

@@ -61,7 +61,7 @@
                                         <a class="underlined link--monochrome" href="{"shipments.details?shipment_id=`$shipment.shipment_id`"|fn_url}"><span>#{$shipment.shipment_id}</span></a>
                                     </td>
                                     <td width="12%" data-th="{__("order_id")}">
-                                        <a class="underlined link--monochrome" href="{"orders.details?order_id=`$shipment.order_id`"|fn_url}"><span>#{$shipment.alternative_id}</span></a>
+                                        <a class="underlined link--monochrome" href="{"orders.details?order_id=`$shipment.order_id`"|fn_url}"><span>{if $shipment.alternative_id}{$shipment.alternative_id}{else}#{$shipment.order_id}{/if}</span></a>
                                     </td>
                                     <td width="14%" data-th="{__("shipment_date")}">
                                         {if $shipment.shipment_timestamp}{$shipment.shipment_timestamp|date_format:"`$settings.Appearance.date_format`"}{else}--{/if}
