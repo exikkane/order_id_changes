@@ -5,7 +5,7 @@
 >
     <td width="3%" class="left mobile-hide table__check-items-cell table__check-items-cell--show-checkbox">
         <input type="checkbox" name="order_ids[]" value="{$o.order_id}" class="cm-item cm-item-status-{$o.status|lower}" /></td>
-    <td width="15%" data-th="{__("id")}">
+    <td width="30%" data-th="{__("id")}">
         <a href="{"orders.details?order_id=`$o.order_id`"|fn_url}" class="underlined link--monochrome">{__("order")} <bdi>{if $o.alternative_id}{$o.alternative_id}{else}#{$o.order_id}{/if}</bdi></a>
         {if $order_statuses[$o.status].params.appearance_type == "I" && $o.invoice_id}
             <p class="muted">{__("invoice")} #{$o.invoice_id}</p>
@@ -14,7 +14,7 @@
         {/if}
         {include file="views/companies/components/company_name.tpl" object=$o}
     </td>
-    <td width="15%" data-th="{__("status")}">
+    <td width="10%" data-th="{__("status")}">
         {include file="common/select_popup.tpl"
         type="orders"
         suffix="o"
@@ -41,7 +41,7 @@
         {/if}
     </td>
     <td width="15%" class="nowrap" data-th="{__("date")}">{$o.timestamp|date_format:"`$settings.Appearance.date_format`, `$settings.Appearance.time_format`"}</td>
-    <td width="17%" data-th="{__("customer")}">
+    <td width="12%" data-th="{__("customer")}">
         {if $o.email}<a href="mailto:{$o.email|escape:url}" class="link--monochrome">@</a> {/if}
         {if $o.company}<p class="muted">{$o.company}</p>{/if}
         {if $o.user_type !== "UserTypes::CUSTOMER"|enum
@@ -54,7 +54,7 @@
             <a href="{"profiles.update?user_id=`$o.user_id`"|fn_url}" class="link--monochrome">{$o.lastname} {$o.firstname}</a>
         {/if}
     </td>
-    <td width="14%" {if $o.phone}data-th="{__("phone")}"{/if}>{if $o.phone}<bdi><a href="tel:{$o.phone}" class="link--monochrome">{$o.phone}</a></bdi>{/if}</td>
+    <td width="9%" {if $o.phone}data-th="{__("phone")}"{/if}>{if $o.phone}<bdi><a href="tel:{$o.phone}" class="link--monochrome">{$o.phone}</a></bdi>{/if}</td>
 
     {hook name="orders:manage_data"}{/hook}
 
