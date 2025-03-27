@@ -1,0 +1,8 @@
+@media(max-width:1100px) {
+    .table-manage-orders .dropdown-toggle--text-wrap {
+    padding-right: 13px !important;
+    }
+    .table-manage-orders .order-status {
+    max-width: 90px !important;;
+    }
+}
