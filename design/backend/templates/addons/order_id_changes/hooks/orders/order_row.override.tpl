@@ -6,7 +6,7 @@
     <td width="3%" class="left mobile-hide table__check-items-cell table__check-items-cell--show-checkbox">
         <input type="checkbox" name="order_ids[]" value="{$o.order_id}" class="cm-item cm-item-status-{$o.status|lower}" /></td>
     <td width="30%" data-th="{__("id")}">
-        <a href="{"orders.details?order_id=`$o.order_id`"|fn_url}" class="underlined link--monochrome">{__("order")} <bdi>{if $o.alternative_id}{$o.alternative_id}{else}#{$o.order_id}{/if}</bdi></a>
+        <a href="{"orders.details?order_id=`$o.order_id`"|fn_url}" class="underlined link--monochrome"> <bdi>{if $o.alternative_id}{$o.alternative_id}{else}#{$o.order_id}{/if}</bdi></a>
         {if $order_statuses[$o.status].params.appearance_type == "I" && $o.invoice_id}
             <p class="muted">{__("invoice")} #{$o.invoice_id}</p>
         {elseif $order_statuses[$o.status].params.appearance_type == "C" && $o.credit_memo_id}
